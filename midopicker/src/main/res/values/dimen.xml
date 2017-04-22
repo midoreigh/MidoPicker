@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+
+
+    <dimen name="mido_picker_selected_image_height">90dp</dimen>
+    <dimen name="mido_picker_fab_elevation">8dp</dimen>
+    <dimen name="mido_picker_fab_size">60dp</dimen>
+    <dimen name="mido_picker_fab_press_translation_z">9dp</dimen>
+
+
+    <dimen name="mido_picker_camera_height">250dp</dimen>
+
+
+
+</resources>
