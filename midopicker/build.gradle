@@ -36,6 +36,7 @@ dependencies {
 
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.commonsware.cwac:camera:0.6.+'
+    compile 'com.flurgle:camerakit:0.9.17'
 
 
 }
