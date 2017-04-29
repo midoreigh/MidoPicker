@@ -16,6 +16,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:adjustViewBounds="true"
+            camerakit:ckCropOutput="true"
             camerakit:ckFocus="tapWithMarker"/>
 
     </RelativeLayout>
