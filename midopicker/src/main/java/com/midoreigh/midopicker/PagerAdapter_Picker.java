@@ -36,9 +36,9 @@ public class PagerAdapter_Picker extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                CwacCameraFragment profileInfoFragment = new CwacCameraFragment();
-                CwacCameraFragment.setConfig(ImagePickerActivity.getConfig());
-                return profileInfoFragment;
+                CameraKitFragment cameraKitFragment = new CameraKitFragment();
+                cameraKitFragment.setConfig(ImagePickerActivity.getConfig());
+                return cameraKitFragment;
 
 
             case 1:

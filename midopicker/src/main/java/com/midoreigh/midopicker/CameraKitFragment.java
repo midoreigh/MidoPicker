@@ -7,8 +7,10 @@ import android.animation.ObjectAnimator;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,6 +23,14 @@ import android.widget.ImageButton;
 
 import com.flurgle.camerakit.CameraListener;
 import com.flurgle.camerakit.CameraView;
+import com.midoreigh.midopicker.util.BitmapUtil;
+import com.midoreigh.midopicker.util.Util;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by midoreigh on 28/4/17.
@@ -61,11 +71,69 @@ public class CameraKitFragment extends Fragment implements View.OnClickListener 
                 super.onPictureTaken(picture);
 
                 // Create a bitmap
-                Bitmap result = BitmapFactory.decodeByteArray(picture, 0, picture.length);
+                Bitmap resultImage = BitmapFactory.decodeByteArray(picture, 0, picture.length);
+                saveImage(resultImage);
             }
         });
 
         return view;
+    }
+    private File getPhotoDirectory() {
+        return new File(Environment.getExternalStorageDirectory() + "/"+getResources().getString(mConfig.getSavedDirectoryName())+"/");
+    }
+
+    private String getPhotoFilename() {
+        String ts = (new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US)).format(new Date());
+        return "Photo_" + ts + ".jpg";
+    }
+
+    protected File getPhotoPath() {
+        File dir = this.getPhotoDirectory();
+        dir.mkdirs();
+        return new File(dir, this.getPhotoFilename());
+    }
+
+    private void saveImage(Bitmap image) {
+
+        try {
+
+            final File photo = getPhotoPath();
+
+            if (photo.exists()) {
+                photo.delete();
+            }
+
+            FileOutputStream fos;
+
+            fos = new FileOutputStream(photo);
+
+            image.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+
+            fos.flush();
+            fos.close();
+
+            MediaScannerConnection.scanFile(getActivity(), new String[]{photo.getPath()}, new String[]{"image/jpeg"}, new MediaScannerConnection.MediaScannerConnectionClient() {
+                @Override
+                public void onMediaScannerConnected() {
+
+                }
+
+                @Override
+                public void onScanCompleted(String path, Uri uri) {
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            showTakenPicture(Uri.parse(photo.toString()));
+                        }
+                    });
+
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -166,7 +234,5 @@ public class CameraKitFragment extends Fragment implements View.OnClickListener 
 
         if (mProgressDialog != null && mProgressDialog.isShowing())
             mProgressDialog.dismiss();
-
-
     }
 }
