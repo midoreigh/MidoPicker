@@ -22,8 +22,6 @@ import android.view.ViewTreeObserver;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.commonsware.cwac.camera.CameraHost;
-import com.commonsware.cwac.camera.CameraHostProvider;
 import com.midoreigh.midopicker.custom.adapter.SpacesItemDecoration;
 import com.midoreigh.midopicker.util.Util;
 
