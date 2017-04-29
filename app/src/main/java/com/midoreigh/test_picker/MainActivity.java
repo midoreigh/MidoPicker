@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
 
                 Config config = new Config();
                 config.setCameraHeight(R.dimen.app_camera_height);
+                config.setCameraWidth(R.dimen.app_camera_width);
                 config.setToolbarTitleRes(R.string.custom_title);
                 config.setSelectionMin(2);
                 config.setSelectionLimit(4);
                 config.setSelectedBottomHeight(R.dimen.bottom_height);
                 config.setFlashOn(true);
-
 
                 getImages(config);
             }

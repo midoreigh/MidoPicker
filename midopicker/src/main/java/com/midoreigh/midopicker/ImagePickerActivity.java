@@ -22,21 +22,18 @@ import android.view.ViewTreeObserver;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.commonsware.cwac.camera.CameraHost;
-import com.commonsware.cwac.camera.CameraHostProvider;
 import com.midoreigh.midopicker.custom.adapter.SpacesItemDecoration;
 import com.midoreigh.midopicker.util.Util;
 
 import java.util.ArrayList;
 
 
-public class ImagePickerActivity extends AppCompatActivity implements CameraHostProvider {
+public class ImagePickerActivity extends AppCompatActivity {
 
     /**
      * Returns the parcelled image uris in the intent with this extra.
      */
     public static final String EXTRA_IMAGE_URIS = "image_uris";
-    public static CwacCameraFragment.MyCameraHost mMyCameraHost;
     // initialize with default config.
     private static Config mConfig = new Config();
     /**
@@ -68,10 +65,6 @@ public class ImagePickerActivity extends AppCompatActivity implements CameraHost
         mConfig = config;
     }
 
-    @Override
-    public CameraHost getCameraHost() {
-        return mMyCameraHost;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

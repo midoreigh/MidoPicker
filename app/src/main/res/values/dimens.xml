@@ -3,7 +3,9 @@
 <resources>
 
 
-    <dimen name="app_camera_height">150dp</dimen>
+    <dimen name="app_camera_height">400dp</dimen>
+    <dimen name="app_camera_width">100dp</dimen>
 
     <dimen name="bottom_height">150dp</dimen>
+
 </resources>

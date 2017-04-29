@@ -1,42 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:camerakit="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000"
-
-    >
-
-
-    <!--android:layout_height="@dimen/post_detail_picture_viewpager"-->
-
+    android:background="#000">
 
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/mido_picker_camera_height"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true">
 
-        <com.commonsware.cwac.camera.CameraView
-            android:id="@+id/cameraView"
+        <com.flurgle.camerakit.CameraView
+            android:id="@+id/camera_kit_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true" />
-
-        <com.midoreigh.midopicker.view.DrawingView
-            android:id="@+id/drawingView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            />
-
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            camerakit:ckFocus="tapWithMarker"/>
 
     </RelativeLayout>
-
-
-    <!--android:layout_centerInParent="true"-->
-
-    <!--android:layout_height="@dimen/post_detail_picture_viewpager"-->
 
     <View
         android:id="@+id/vShutter"
@@ -50,13 +32,13 @@
         android:layout_width="@dimen/mido_picker_fab_size"
         android:layout_height="@dimen/mido_picker_fab_size"
         android:layout_alignParentBottom="true"
-
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
         android:background="@drawable/btn_bg"
         android:padding="15dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_camera" />
+        android:src="@drawable/ic_camera"
+        android:contentDescription="@string/capture_image" />
 
 
 </RelativeLayout>
