@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,8 @@ import java.util.Locale;
  */
 
 public class CameraKitFragment extends Fragment implements View.OnClickListener {
+
+    private static final String TAG = CameraKitFragment.class.getSimpleName();
 
     private static final Interpolator ACCELERATE_INTERPOLATOR = new AccelerateInterpolator();
     private static final Interpolator DECELERATE_INTERPOLATOR = new DecelerateInterpolator();
@@ -64,6 +67,12 @@ public class CameraKitFragment extends Fragment implements View.OnClickListener 
         btn_take_picture.setImageResource(mConfig.getCameraBtnImage());
         btn_take_picture.setBackgroundResource(mConfig.getCameraBtnBackground());
         vShutter = view.findViewById(R.id.vShutter);
+
+        ViewGroup.LayoutParams cameraViewLayoutParams = cameraView.getLayoutParams();
+        cameraViewLayoutParams.height = (int) getResources().getDimension(mConfig.getCameraHeight());
+        cameraViewLayoutParams.width = (int) getResources().getDimension(mConfig.getCameraWidth());
+
+        cameraView.setLayoutParams(cameraViewLayoutParams);
 
         cameraView.setCameraListener(new CameraListener() {
             @Override

@@ -6,9 +6,12 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 
 public class PagerAdapter_Picker extends FragmentPagerAdapter {
+    private static final String TAG = CameraKitFragment.class.getSimpleName();
+
 
 
     String[] tab_titles;
@@ -37,7 +40,7 @@ public class PagerAdapter_Picker extends FragmentPagerAdapter {
         switch (position) {
             case 0:
                 CameraKitFragment cameraKitFragment = new CameraKitFragment();
-                cameraKitFragment.setConfig(ImagePickerActivity.getConfig());
+                CameraKitFragment.setConfig(ImagePickerActivity.getConfig());
                 return cameraKitFragment;
 
 

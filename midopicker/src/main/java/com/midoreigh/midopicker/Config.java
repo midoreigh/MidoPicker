@@ -23,6 +23,7 @@ public class Config {
     private int selectionMin = 0;
 
     private int cameraHeight = R.dimen.mido_picker_camera_height;
+    private int cameraWidth = R.dimen.mido_picker_camera_width;
 
     private int cameraBtnImage = R.drawable.ic_camera;
     private int cameraBtnBackground = R.drawable.btn_bg;
@@ -37,6 +38,17 @@ public class Config {
 
     public int getCameraHeight() {
         return cameraHeight;
+    }
+
+    public int getCameraWidth() {
+        return cameraWidth;
+    }
+
+    public void setCameraWidth(@DimenRes int dimenRes) {
+        if (dimenRes <=0){
+            throw new IllegalArgumentException("Invalid value for camera height");
+        }
+        this.cameraWidth = dimenRes;
     }
 
     public void setCameraHeight(@DimenRes int dimenRes) {
